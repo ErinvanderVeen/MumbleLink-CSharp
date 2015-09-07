@@ -4,12 +4,11 @@ using System.Runtime.InteropServices;
 
 namespace MumbleLink_CSharp
 {
-    [SuppressMessage("ReSharper", "BuiltInTypeReferenceStyle")]
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
     public struct MumbleLinkedMemory
     {
-        public readonly UInt32 UiVersion;
-        public readonly UInt32 UiTick;
+        public readonly uint UiVersion;
+        public readonly uint UiTick;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
         public readonly float[] FAvatarPosition;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
