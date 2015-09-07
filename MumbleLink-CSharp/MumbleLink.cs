@@ -66,40 +66,6 @@ namespace MumbleLink_CSharp
                 (MumbleLinkedMemory)Marshal.PtrToStructure(_bufferHandle.AddrOfPinnedObject(), typeof(MumbleLinkedMemory));
         }
 
-
-        //Context is not outputted, because, it is a binary blob that should be treated as a distinct structure
-        public override string ToString()
-        {
-            var linkedMemory = Read();
-
-
-            var str = new StringBuilder();
-
-            str.AppendLine("UiVersion : " + linkedMemory.UiVersion);
-            str.AppendLine("UiTick : " + linkedMemory.UiTick);
-            str.AppendFormat("FAvatarPosition : [{0}, {1}, {2}]\n", linkedMemory.FAvatarPosition[0],
-                linkedMemory.FAvatarPosition[1], linkedMemory.FAvatarPosition[2]);
-            str.AppendFormat("FAvatarFront : [{0}, {1}, {2}]\n", linkedMemory.FAvatarFront[0],
-                linkedMemory.FAvatarFront[1], linkedMemory.FAvatarFront[2]);
-            str.AppendFormat("FAvatarTop : [{0}, {1}, {2}]\n", linkedMemory.FAvatarTop[0],
-                linkedMemory.FAvatarTop[1], linkedMemory.FAvatarTop[2]);
-            str.AppendLine("Name : " + new string(linkedMemory.Name));
-            str.AppendFormat("FCameraPosition : [{0}, {1}, {2}]\n", linkedMemory.FCameraPosition[0],
-                linkedMemory.FCameraPosition[1], linkedMemory.FCameraPosition[2]);
-            str.AppendFormat("FCameraFront : [{0}, {1}, {2}]\n", linkedMemory.FCameraFront[0],
-                linkedMemory.FCameraFront[1], linkedMemory.FCameraFront[2]);
-            str.AppendFormat("FCameraTop : [{0}, {1}, {2}]\n", linkedMemory.FCameraTop[0],
-                linkedMemory.FCameraTop[1], linkedMemory.FCameraTop[2]);
-
-            str.AppendLine("Identity : " + new string(linkedMemory.Identity));
-
-            str.AppendLine("ContextLen : " + linkedMemory.ContextLen);
-
-            str.AppendLine("Description : " + new string(linkedMemory.Description));
-
-            return str.ToString();
-        }
-
         public void Dispose()
         {
             if (_unmanagedStream != null)
