@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Text;
 
 namespace MumbleLink_CSharp
 {
@@ -67,8 +68,11 @@ namespace MumbleLink_CSharp
 
 
         //Context is not outputted, because, it is a binary blob that should be treated as a distinct structure
-        public string ToString()
+        public override string ToString()
         {
+            var linkedMemory = Read();
+
+
             var str = new StringBuilder();
 
             str.AppendLine("UiVersion : " + linkedMemory.UiVersion);
